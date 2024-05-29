@@ -11,6 +11,8 @@ on:
         required: false
         default: 'yoophi'
         type: string
+    description:
+      workflow sample
 
 jobs:
   build:
@@ -24,3 +26,7 @@ jobs:
           set -xe
           chmod +x .github/workflows/hello.sh
           .github/workflows/hello.sh ${{ github.event.inputs.greeting }} ${{ github.event.inputs.name }}
+
+      - name: check GITHUB_TOKEN
+        run: |
+          echo GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
